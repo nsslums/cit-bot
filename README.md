@@ -20,7 +20,7 @@ TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 ## オリジナルファイル
-各ファイルのテンプレートです．  
+各ファイルのテンプレートです．(pantyetta.py)
 ```python:pantyeyta.py
 import discord
 
