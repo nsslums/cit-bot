@@ -5,7 +5,14 @@ cit-botはdiscord上からcitサービスへのアスセスを行います．
 pythonとjava での実装があります．
 新しいバージョンを作成する場合は**必ずブランチを作成**してください．
 
-### 環境変数 .env
+## 初期設定
+
+```
+pip install discord.py
+pip install load_dotenv
+```
+
+## 環境変数 .env
 .envファイルは以下のように新しく作成し，必ず.gitignoreに追加されていることを確認してください．　<span style="color: red; ">**commitをしないように！**</span>
 ```
 /cit-bot

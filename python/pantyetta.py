@@ -6,8 +6,8 @@ def init(tree_bot):
     tree = tree_bot
 
     @tree.command(name="pantyetta",description="descriptioin")
-    async def pantyetta(interaction: discord.Interaction):
-        await interaction.response.send_message("pancho",ephemeral=True)#ephemeral=True→「これらはあなただけに表示されています」
+    async def pantyetta(interaction: discord.Interaction, private:bool=True):
+        await interaction.response.send_message("pancho",ephemeral=private)#ephemeral=True→「これらはあなただけに表示されています」
 
     def get_nth_week(year, month, day, firstweekday=0):
         first_dow = calendar.monthrange(year, month)[0]
