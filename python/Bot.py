@@ -20,11 +20,11 @@ def today():
     return datetime.datetime.now(tz)
 
 @tree.command(name="ping",description="descriptioin")
-async def test_command(interaction: discord.Interaction):
+async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("pong",ephemeral=True)#ephemeral=True→「これらはあなただけに表示されています」
 
 @tree.command(name="ohiru",description="weekry launch menu.")
-async def test_command(interaction: discord.Interaction, private:bool=True):
+async def ohiru(interaction: discord.Interaction, private:bool=True):
     date = today()
     image_url='https://www.cit-s.com/wp/wp-content/themes/cit/menu/td_' + str(date.strftime("%Y%m")) + '_' + str(get_nth_week(date.year, date.month, date.day)) + '.png'
     embed=discord.Embed(title= "今週のメニュー",color=0x3c0fbc)
