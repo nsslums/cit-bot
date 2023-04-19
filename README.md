@@ -47,10 +47,13 @@ pantyetta.init(tree)
 
 ## Command
 ```
-/ohiru
+/ohiru (private)
 ```
-###  引数
-1. private 個人メッセージを有効にするかを指定する事ができます．
+> 1. 個人メッセージを有効にするかを指定する事ができます．
 
+## Documents Link
 
-更新：2023/04/17
+> [qiita](https://qiita.com/Luapy/items/3abff9575e132e2955ec)  
+> [公式ドキュメント](https://discordpy.readthedocs.io/ja/latest/index.html)
+
+更新：2023/04/19
