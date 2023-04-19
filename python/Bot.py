@@ -1,35 +1,20 @@
 import discord
 from discord import app_commands
 import env
-import calendar
-import datetime
+import pantyetta
 
 
 intents = discord.Intents.default()#適当に。
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
+pantyetta.init(tree)
 
-def get_nth_week(year, month, day, firstweekday=0):
-    first_dow = calendar.monthrange(year, month)[0]
-    offset = (first_dow - firstweekday) % 7
-    return (day + offset - 1) // 7 + 1
-
-def today():
-    tz = datetime.timezone(datetime.timedelta(hours=9))
-    return datetime.datetime.now(tz)
 
 @tree.command(name="ping",description="descriptioin")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("pong",ephemeral=True)#ephemeral=True→「これらはあなただけに表示されています」
 
-@tree.command(name="ohiru",description="weekry launch menu.")
-async def ohiru(interaction: discord.Interaction, private:bool=True):
-    date = today()
-    image_url='https://www.cit-s.com/wp/wp-content/themes/cit/menu/td_' + str(date.strftime("%Y%m")) + '_' + str(get_nth_week(date.year, date.month, date.day)) + '.png'
-    embed=discord.Embed(title= "今週のメニュー",color=0x3c0fbc)
-    embed.set_image(url=image_url)#URLでEmbedに画像を貼る
-    await interaction.response.send_message(embed=embed, ephemeral=private)
 
 @client.event
 async def on_ready():
