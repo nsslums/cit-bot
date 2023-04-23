@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: citbot
+  template:
+    metadata:
+      labels:
+        app: citbot
+    spec:
+      containers:
+      - name: citbot
+        image: "gitlab-registry.maruru.me/nsslums/cit-bot:0.1.0"
+        env:
+        # auth
+        - name: TOKEN
+          value: "<discord-secret>"
+      imagePullSecrets:
+      - name: gitlab-nsslums-citbot
