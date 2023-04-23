@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitlab-nsslums-citbot
+type: kubernetes.io/dockercfg
+data:
+  .dockercfg: <gitlab-registry-secret>
