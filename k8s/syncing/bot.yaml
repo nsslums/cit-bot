@@ -19,8 +19,8 @@ spec:
         # auth
         - name: TOKEN
           valueFrom:
-          secretKeyRef:
-            name: bot-secret
-            key: duscord-token
+            secretKeyRef:
+              name: bot-secret
+              key: duscord-token
       imagePullSecrets:
       - name: gitlab-nsslums-citbot
