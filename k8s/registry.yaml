@@ -4,4 +4,15 @@ metadata:
   name: gitlab-nsslums-citbot
 type: kubernetes.io/dockerconfigjson
 data:
-  .dockerconfigjson: <registry>
+  .dockerconfigjson: <registry connect info>
+
+# 以下のjsonをbase64エンコードして<registry connect info>に挿入
+# gitlab container registryの場合はdeploy tokenを使用
+#
+#{
+#        "auths": {
+#                "レジストリホスト名": {
+#                        "auth": "「ユーザー名:アクセストークン」をbase64エンコード"
+#                }
+#        }
+#}
