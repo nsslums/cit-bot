@@ -18,6 +18,9 @@ spec:
         env:
         # auth
         - name: TOKEN
-          value: "<discord-secret>"
+          valueFrom:
+          secretKeyRef:
+            name: bot-secret
+            key: duscord-token
       imagePullSecrets:
       - name: gitlab-nsslums-citbot
