@@ -1,3 +1,5 @@
 # kubernetes展開
 
-このディレクトリ上のマニフェストはArgocdでステージング環境と同期されています。
+## Argocdでのstaging環境同期
+
+syncing上のマニフェストはArgocdでステージング環境と同期されています。
