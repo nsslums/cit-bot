@@ -10,7 +10,7 @@ RUN apt update && apt install git -y
 ARG NOCACHE=1
 
 # clone repository
-RUN git clone https://<github-registry-secret>@github.com/nsslums/cit-bot.git
+RUN git clone https://github.com/nsslums/cit-bot.git
 
 
 #### app image ####
