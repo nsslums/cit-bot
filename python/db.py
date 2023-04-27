@@ -1,4 +1,6 @@
 from datetime import datetime
+import json_tricks
+import env
 
 class event:
     def __init__(self, text:str, notis_date:datetime, notification:bool=True) -> None:
@@ -22,3 +24,11 @@ class db:
         if self.getSize() < 1:
             return 0
         return self.todoList[self.getSize() - 1].id
+    
+    def write(self):
+        with open(env.TODOFILE, 'w', encoding="utf-8") as f:
+            json_tricks.dump(self.todoList, f)
+            
+    def load(self):
+        with open(env.TODOFILE, 'r', encoding='utf-8') as f:
+            self.todoList = json_tricks.load(f)
