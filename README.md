@@ -10,6 +10,7 @@ pythonとjava での実装があります．
 ```
 pip install discord.py
 pip install load_dotenv
+pip install json-tricks
 ```
 
 ## 環境変数 .env
