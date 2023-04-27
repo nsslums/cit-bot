@@ -2,6 +2,7 @@ from datetime import datetime
 import json_tricks
 import env
 import json
+import os
 
 class event:
     def __init__(self, text:str, notis_date:datetime, notification:bool=True) -> None:
@@ -14,6 +15,8 @@ class event:
 class db:
     def __init__(self) -> None:
         self.todoList = []
+        if os.path.isfile(env.TODOFILE):
+            self.load()
         
     def add(self, t:event):
         t.id = self.getLastID() + 1 

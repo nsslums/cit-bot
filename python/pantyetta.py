@@ -1,7 +1,6 @@
 import discord
 import calendar
 import datetime
-import json
 import db
 
 def get_nth_week(year, month, day, firstweekday=0):
@@ -52,11 +51,18 @@ def init(tree_bot):
         embed.set_image(url=image_url)#URLでEmbedに画像を貼る
         await interaction.response.send_message(embed=embed, ephemeral=private)
 
-    @tree.command(name="todo",description="todo")
-    async def todo(interaction: discord.Interaction, text:str, year:int=now().year, month:int=now().month, day:int=now().day, hour:int=now().hour, minute:int=now().minute, notification:bool=True, mode:str="add"):
+    @tree.command(name="todo_add",description="todo")
+    async def todo_add(interaction: discord.Interaction, text:str, year:int=now().year, month:int=now().month, day:int=now().day, hour:int=now().hour, minute:int=now().minute, notification:bool=True):
         global todoList
-        if mode=="add":
-            newEvent = db.event(text=text, notis_date=datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute), notification=notification)
-            todoList.add(newEvent)
-            
+        newEvent = db.event(text=text, notis_date=datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute), notification=notification)
+        todoList.add(newEvent)
         await interaction.response.send_message("ok", ephemeral=True)
+        
+    @tree.command(name="todo_list",description="list")
+    async def todo_list(interaction: discord.Integration):
+        global todoList
+        output=""
+        for event in todoList.todoList:
+            output += str(event.id) + "\t" + event.text + "\t" + str(event.notis_date) + "\n"
+            
+        await interaction.response.send_message(output, ephemeral=True)
