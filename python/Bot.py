@@ -1,5 +1,6 @@
 import discord
 from discord import app_commands
+import sys
 import env
 import pantyetta
 
@@ -22,5 +23,9 @@ async def on_ready():
     await tree.sync()#スラッシュコマンドを同期
 
 
-
-client.run(env.TOKEN)
+if "--debug" in sys.argv:
+    print("--- DEBUG MODE ---")
+    client.run(env.TOKEN_DEBUG)
+else:
+    print("--- NORMAL MODE ---")
+    client.run(env.TOKEN)

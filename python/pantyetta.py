@@ -2,6 +2,7 @@ import discord
 import calendar
 import datetime
 import json
+import db
 
 def get_nth_week(year, month, day, firstweekday=0):
     first_dow = calendar.monthrange(year, month)[0]
@@ -27,28 +28,14 @@ def format_datetime(date, time):
     return fdt.replace(hour=hour, minute=minute)
 
 
-todoList = []
-
-def openJson():
-    global todoList
-    with open('./todo.json', encoding="utf-8") as f:
-        todoList = json.load(f)
-
-def writeJson(value):
-    with open("./todo.json", "w", encoding="utf-8") as outputFile:
-        json.dump(value, outputFile, indent=2, ensure_ascii=False )
-
-def addJson(value):
-    global todoList
-    todoList.append(value)
-    writeJson(todoList)
-
 def checkToDo():
     global todoList
     for todo in todoList:
         if todo["notification"]:
             continue
         print(todo["data"])
+
+todoList = db.db()
 
 def init(tree_bot):
     tree = tree_bot
@@ -66,18 +53,10 @@ def init(tree_bot):
         await interaction.response.send_message(embed=embed, ephemeral=private)
 
     @tree.command(name="todo",description="todo")
-    async def todo(interaction: discord.Interaction, date:int, time:int, value:str, notification:bool=True, mode:str="add"):
-        openJson()
+    async def todo(interaction: discord.Interaction, text:str, year:int=now().year, month:int=now().month, day:int=now().day, hour:int=now().hour, minute:int=now().minute, notification:bool=True, mode:str="add"):
+        global todoList
         if mode=="add":
-            global todoList
-            
-            schedule = {}
-            schedule["id"] = todoList[len(todoList) -1]["id"] + 1
-            schedule["created"] = now()
-            schedule["date"] = format_datetime(date, time)
-            schedule["value"] = value
-            schedule["notification"] = not notification
-
-            addJson(schedule)
+            newEvent = db.event(text=text, notis_date=datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute), notification=notification)
+            todoList.add(newEvent)
             
         await interaction.response.send_message("ok", ephemeral=True)
