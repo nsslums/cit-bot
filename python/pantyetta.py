@@ -1,7 +1,7 @@
 import discord
 import calendar
 import datetime
-import db
+import todo_db
 
 def get_nth_week(year, month, day, firstweekday=0):
     first_dow = calendar.monthrange(year, month)[0]
@@ -34,7 +34,7 @@ def checkToDo():
             continue
         print(todo["data"])
 
-todoList = db.db()
+todoList = todo_db.db()
 
 def init(tree_bot):
     tree = tree_bot
@@ -54,15 +54,15 @@ def init(tree_bot):
     @tree.command(name="todo_add",description="todo")
     async def todo_add(interaction: discord.Interaction, text:str, year:int=now().year, month:int=now().month, day:int=now().day, hour:int=now().hour, minute:int=now().minute, notification:bool=True):
         global todoList
-        newEvent = db.event(text=text, notis_date=datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute), notification=notification)
-        todoList.add(newEvent)
+        newEvent = todo_db.event(text=text, notis_date=datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute), notification=notification)
+        todoList.add(interaction.guild.id ,newEvent)
         await interaction.response.send_message("ok", ephemeral=True)
         
     @tree.command(name="todo_list",description="list")
     async def todo_list(interaction: discord.Integration):
         global todoList
-        output=""
-        for event in todoList.todoList:
-            output += str(event.id) + "\t" + event.text + "\t" + str(event.notis_date) + "\n"
+        embed = discord.Embed(title="Todo List")
+        for event in todoList.list(interaction.guild.id):
+            embed.add_field(name=event.id,value=event.text)
             
-        await interaction.response.send_message(output, ephemeral=True)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
