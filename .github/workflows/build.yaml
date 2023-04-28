@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE: "gitlab-registry.maruru.me/nsslums/cit-bot:${{ github.sha }}"
+    permissions:
+      contents: write
     steps:
       -
         name: Checkout
@@ -29,4 +33,12 @@ jobs:
           context: .
           file: ./container/Dockerfile
           push: true
-          tags: gitlab-registry.maruru.me/nsslums/cit-bot:latest
+          tags: ${{ env.IMAGE }}
+      -
+        name: chage docker image
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '.spec.template.spec.containers[0].image = env(IMAGE)' -i ${{ env.WORK_DIR }}k8s/syncing/bot.yaml
+      -
+        name: commit
+        uses: stefanzweifel/git-auto-commit-action@v4
