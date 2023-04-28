@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE: "gitlab-registry.maruru.me/nsslums/cit-bot:${{ github.sha }}"
+    # このリポジトリに対する書き込み権限を付与
     permissions:
       contents: write
     steps:
