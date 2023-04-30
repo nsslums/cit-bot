@@ -17,7 +17,7 @@ RUN git clone https://github.com/nsslums/cit-bot.git
 FROM python:slim
 
 # library install
-RUN pip install discord.py load_dotenv
+RUN pip install discord.py load_dotenv json-tricks
 
 # disable cache
 ARG NOCACHE=1
