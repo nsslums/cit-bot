@@ -22,5 +22,15 @@ spec:
                 secretKeyRef:
                   name: bot-secret
                   key: duscord-token
+            - name: DATA_DIR
+              value: /mnt/data
+          volumeMounts:
+          - mountPath: "/mnt/data"
+            name: data
       imagePullSecrets:
         - name: gitlab-nsslums-citbot
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: pvc-data
+            readOnly: false
