@@ -24,7 +24,8 @@ pip install json-tricks
 ```
 .envの内容はこちらを置き換えてお使いください．
 ```
-TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+TOKEN_DEBUG="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+TODOFILE="xxxxxxxxx.json"
 ```
 
 ## オリジナルファイル
