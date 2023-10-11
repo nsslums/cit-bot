@@ -1,5 +1,5 @@
 #### Builder image ####
-FROM python:slim AS builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /home
 
@@ -14,10 +14,10 @@ RUN git clone https://github.com/nsslums/cit-bot.git
 
 
 #### app image ####
-FROM python:slim
+FROM python:3.11-slim
 
 # library install
-RUN apt update && apt install gcc && pip install discord.py load_dotenv json-tricks
+RUN pip install discord.py load_dotenv json-tricks
 
 # disable cache
 ARG NOCACHE=1
