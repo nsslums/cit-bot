@@ -25,3 +25,7 @@ def init(tree_bot):
         embed=discord.Embed(title= "今週のメニュー",color=0x3c0fbc)
         embed.set_image(url=image_url)#URLでEmbedに画像を貼る
         await interaction.response.send_message(embed=embed, ephemeral=private)
+    
+    @tree.command(name="masa",description="descriptioin")
+    async def pantyetta(interaction: discord.Interaction, private:bool=False):
+        await interaction.response.send_message("バーニングレッド",ephemeral=private)#ephemeral=True→「これらはあなただけに表示されています」
