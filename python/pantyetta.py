@@ -35,5 +35,9 @@ def init(tree_bot):
         await interaction.response.send_message(embed=embed, ephemeral=private)
     
     @tree.command(name="masa",description="descriptioin")
-    async def pantyetta(interaction: discord.Interaction, private:bool=False):
+    async def masa(interaction: discord.Interaction, private:bool=False):
         await interaction.response.send_message("バーニングレッド",ephemeral=private)#ephemeral=True→「これらはあなただけに表示されています」
+    
+    @tree.command(name="nemui",description="descriptioin")
+    async def nemui(interaction: discord.Interaction, private:bool=False):
+        await interaction.response.send_message("おやすみー",ephemeral=private)#ephemeral=True→「これらはあなただけに表示されています」
