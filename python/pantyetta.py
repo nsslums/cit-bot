@@ -26,6 +26,14 @@ def init(tree_bot):
         embed.set_image(url=image_url)#URLでEmbedに画像を貼る
         await interaction.response.send_message(embed=embed, ephemeral=private)
     
+    @tree.command(name="gomi",description="View garbage live.")
+    async def gomi(interaction: discord.Interaction, private:bool=True):
+        date = today()
+        image_url='https://www.cit-s.com/i_catch/dining/tsudanuma.jpg?' + str(date.strftime("%Y%m%d%H%M%S"))
+        embed=discord.Embed(title= "食堂の混雑状況",color=0x3c0fbc)
+        embed.set_image(url=image_url)#URLでEmbedに画像を貼る
+        await interaction.response.send_message(embed=embed, ephemeral=private)
+    
     @tree.command(name="masa",description="descriptioin")
     async def pantyetta(interaction: discord.Interaction, private:bool=False):
         await interaction.response.send_message("バーニングレッド",ephemeral=private)#ephemeral=True→「これらはあなただけに表示されています」
