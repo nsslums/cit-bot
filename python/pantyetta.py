@@ -12,7 +12,7 @@ def init(tree_bot):
     def get_nth_week(year, month, day, firstweekday=0):
         first_dow = calendar.monthrange(year, month)[0]
         offset = (first_dow - firstweekday) % 7
-        return (day + offset - 1) // 7 + 1
+        return (day + offset - 1) // 7
 
     def today():
         tz = datetime.timezone(datetime.timedelta(hours=9))
