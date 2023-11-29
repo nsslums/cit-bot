@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: citbot
-          image: "gitlab-registry.maruru.me/nsslums/cit-bot:6d130cd950e3057de02aa5be0c957267b2297d9b"
+          image: "gitlab-registry.maruru.me/nsslums/cit-bot:0252fef795855696083fa531a9b8a6352245b2d1"
           env:
             # auth
             - name: TOKEN
