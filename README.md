@@ -1,3 +1,5 @@
+
+![cit-bot](https://github.com/nsslums/cit-bot/assets/20297254/7bd8003c-1d39-498e-ba6e-2808e0537027)
 # cit-bot
 
 cit-botはdiscord上からcitサービスへのアスセスを行います．
