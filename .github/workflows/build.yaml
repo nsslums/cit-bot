@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
-      IMAGE: "${{ github.repository }}:${{ github.sha }}"
+      IMAGE: "ghcr.io/${{ github.repository }}:${{ github.sha }}"
     # このリポジトリに対する書き込み権限を付与
     permissions:
       contents: write
+      packages: write
     steps:
       -
         name: Checkout
