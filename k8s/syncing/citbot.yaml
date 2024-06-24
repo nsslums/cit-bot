@@ -27,8 +27,6 @@ spec:
           volumeMounts:
             - mountPath: "/mnt/data"
               name: data
-      imagePullSecrets:
-        - name: gitlab-nsslums-citbot
       volumes:
         - name: data
           persistentVolumeClaim:
