@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 import env
 import pantyetta
+import ohiru
 
 
 intents = discord.Intents.default()#適当に。
@@ -9,6 +10,7 @@ client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
 pantyetta.init(tree)
+ohiru.init(tree)
 
 
 @tree.command(name="ping",description="descriptioin")

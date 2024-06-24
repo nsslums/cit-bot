@@ -1,3 +1,4 @@
 .env
 python/__pycache__/
 python/.idea
+.venv
