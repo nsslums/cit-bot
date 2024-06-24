@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: citbot
-          image: "ghcr.io/nsslums/cit-bot:1ba3478c1cc0b87253b737b9efd11580736d8a50"
+          image: "ghcr.io/nsslums/cit-bot:ed02a0e54d19ec0927518fb179ed50839de0276c"
           env:
             # auth
             - name: TOKEN
